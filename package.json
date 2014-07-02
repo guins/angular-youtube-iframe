@@ -21,7 +21,7 @@
     "iframe",
     "api"
   ],
-  "author": "Stéphane Guigné",
+  "author": "Stéphane Guigné <stephane.guigne@invokemedia.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/guins/angular-youtube-iframe/issues"
@@ -31,6 +31,7 @@
     "gulp": "^3.8.5",
     "coffee-script": "^1.7.1",
     "gulp-util": "^2.2.19",
-    "gulp-coffee": "^2.0.1"
+    "gulp-coffee": "^2.0.1",
+    "bower": "^1.3.6"
   }
 }
