@@ -2,7 +2,7 @@
   "name": "angular-youtube-iframe",
   "version": "0.0.0",
   "authors": [
-    "Stéphane Guigné <stephane.guigne@invokemedia.com>"
+    "Stéphane Guigné <contact@stephaneguigne.com>"
   ],
   "description": "AngularJs directive to display a youtube iframe player",
   "keywords": [
