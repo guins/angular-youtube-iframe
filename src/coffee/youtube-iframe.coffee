@@ -365,7 +365,7 @@ angular
 					safeautoplay: '@' # issue with "autoplay" attribute name
 					chromeless: '@' # without any youtube branding
 				transclude: true
-				template: '<div yti-player></div><div yti-overlay ng-transclude ng-class="{\'touch-enabled\':hasEverPlayed}"></div>'
+				template: '<div id="{{playerId}}" yti-player></div><div yti-overlay ng-transclude ng-class="{\'touch-enabled\':hasEverPlayed}"></div>'
 				link: (scope, element, attrs, ctrl)->
 
 					angular.extend scope, {
@@ -376,8 +376,6 @@ angular
 
 					_playerCreated = false
 					_mouseMoveTimer = null
-					$player = element.find '[yti-player]'
-					$player.attr 'id', scope.playerId
 
 					if !scope.ratio
 						scope.ratio = 9/16
@@ -749,15 +747,15 @@ angular
 				require: '^youtubeIframe'
 				scope: true
 				replace: true
-				template: '<div class="yti-progress-bar-container"><div class="yti-progress-bar"></div><div class="yti-progress-tilt"></div></div>'
+				template: '<div class="yti-progress-bar-container">
+					<div class="yti-progress-bar" style="width:{{percent}}%"></div>
+					<div class="yti-progress-tilt" style="left:{{percent}}%"></div>
+				</div>'
 				link: (scope, element, attrs, iframeCtrl)->
 
-					resizeBar = (percent)->
-						element.find('.yti-progress-bar').css 'width', "#{percent}%"
-						element.find('.yti-progress-tilt').css 'left', "#{percent}%"
-						return
-
-					resizeBar(0)
+					angular.extend scope, {
+						percent: 0
+					}
 
 					element.on 'click', (e)->
 						e.preventDefault()
@@ -772,7 +770,7 @@ angular
 					iframeCtrl.$watch ()-> 
 						return iframeCtrl.currentProgress
 					, (currentProgress, oldCurrentProgress)->
-						resizeBar(currentProgress)
+						scope.percent = currentProgress
 
 					return @
 			}

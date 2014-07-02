@@ -335,9 +335,9 @@ angular.module('sg.youtube', []).constant('youtubeBasePath', 'http://www.youtube
         chromeless: '@'
       },
       transclude: true,
-      template: '<div yti-player></div><div yti-overlay ng-transclude ng-class="{\'touch-enabled\':hasEverPlayed}"></div>',
+      template: '<div id="{{playerId}}" yti-player></div><div yti-overlay ng-transclude ng-class="{\'touch-enabled\':hasEverPlayed}"></div>',
       link: function(scope, element, attrs, ctrl) {
-        var $player, _calcPlayerSize, _clearTimer, _createPlayer, _hideControls, _mouseMoveTimer, _playerCreated, _queueNewVideo, _showControls;
+        var _calcPlayerSize, _clearTimer, _createPlayer, _hideControls, _mouseMoveTimer, _playerCreated, _queueNewVideo, _showControls;
         angular.extend(scope, {
           playerId: "" + attrs.id + "-ytplayer",
           ytPlayer: null,
@@ -345,8 +345,6 @@ angular.module('sg.youtube', []).constant('youtubeBasePath', 'http://www.youtube
         });
         _playerCreated = false;
         _mouseMoveTimer = null;
-        $player = element.find('[yti-player]');
-        $player.attr('id', scope.playerId);
         if (!scope.ratio) {
           scope.ratio = 9 / 16;
         }
@@ -705,14 +703,11 @@ angular.module('sg.youtube', []).constant('youtubeBasePath', 'http://www.youtube
       require: '^youtubeIframe',
       scope: true,
       replace: true,
-      template: '<div class="yti-progress-bar-container"><div class="yti-progress-bar"></div><div class="yti-progress-tilt"></div></div>',
+      template: '<div class="yti-progress-bar-container"> <div class="yti-progress-bar" style="width:{{percent}}%"></div> <div class="yti-progress-tilt" style="left:{{percent}}%"></div> </div>',
       link: function(scope, element, attrs, iframeCtrl) {
-        var resizeBar;
-        resizeBar = function(percent) {
-          element.find('.yti-progress-bar').css('width', "" + percent + "%");
-          element.find('.yti-progress-tilt').css('left', "" + percent + "%");
-        };
-        resizeBar(0);
+        angular.extend(scope, {
+          percent: 0
+        });
         element.on('click', function(e) {
           var percentPos;
           e.preventDefault();
@@ -724,7 +719,7 @@ angular.module('sg.youtube', []).constant('youtubeBasePath', 'http://www.youtube
         iframeCtrl.$watch(function() {
           return iframeCtrl.currentProgress;
         }, function(currentProgress, oldCurrentProgress) {
-          return resizeBar(currentProgress);
+          return scope.percent = currentProgress;
         });
         return this;
       }
