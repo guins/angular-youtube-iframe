@@ -9,6 +9,31 @@
         <title>Youtube Iframe Angular directive</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            [yti-progress-bar] {
+                position: relative;
+                height: 10px;
+                background-color: #ddd;
+            }
+            [yti-progress-bar] .yti-progress-bar {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 0;
+                height: 100%;
+                background-color: #F00;
+            }
+            [yti-progress-bar] .yti-progress-tilt {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                height: 100%;
+                width: 2px;
+                background-color: #FFF;
+            }
+        </style>
     </head>
     <body ng-app="youtubeIframeApp">
         <h1>Player Demo</h1>
