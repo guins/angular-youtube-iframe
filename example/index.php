@@ -15,9 +15,19 @@
 
         <div youtube-iframe id="test" video-id="fFtSf1tfzZk">
             <div yti-progress-bar></div>
+            <div>
+                <a href="" yti-play-pause>Play/Pause toggler</a>
+            </div>
+            <div>
+                <a href="" yti-sound>Sound toggler</a>
+            </div>
+            <div>
+                <a href="" yti-fullscreen>Fullscreen toggler</a>
+            </div>
+            <div>duration: <div yti-duration></div></div>
+            <div>current time: <div yti-current-time></div></div>
         </div>
 
-        <script src="../bower_components/jquery/dist/jquery.js"></script>
         <script src="../bower_components/angular/angular.js"></script>
         <script src="../src/js/youtube-iframe.js"></script>
         <script>
