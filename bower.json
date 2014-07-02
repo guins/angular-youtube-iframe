@@ -24,6 +24,7 @@
     "tests"
   ],
   "devDependencies": {
-    "angular": "~1.2.19"
+    "angular": "~1.2.19",
+    "jquery": "~2.1.1"
   }
 }
