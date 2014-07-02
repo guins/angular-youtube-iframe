@@ -466,7 +466,7 @@ angular.module('sg.youtube', []).constant('youtubeBasePath', 'http://www.youtube
           _clearTimer();
           if (isPlaying) {
             element.addClass('is-playing');
-            return element.trigger('mousemove');
+            return element.triggerHandler('mousemove');
           } else {
             element.removeClass('is-playing');
             return _showControls();

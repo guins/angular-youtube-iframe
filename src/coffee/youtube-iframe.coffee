@@ -492,7 +492,7 @@ angular
 						if isPlaying
 							element.addClass 'is-playing'
 							# _hideControls()
-							element.trigger 'mousemove'
+							element.triggerHandler 'mousemove'
 						else
 							element.removeClass 'is-playing'
 							_showControls()
