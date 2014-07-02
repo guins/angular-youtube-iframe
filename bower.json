@@ -1,0 +1,26 @@
+{
+  "name": "angular-youtube-iframe",
+  "version": "0.0.0",
+  "authors": [
+    "Stéphane Guigné <stephane.guigne@invokemedia.com>"
+  ],
+  "description": "AngularJs directive to display a youtube iframe player",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "directive",
+    "youtube",
+    "iframe",
+    "api"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/guins/angular-youtube-iframe",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
