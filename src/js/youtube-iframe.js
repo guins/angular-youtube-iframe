@@ -349,7 +349,7 @@ angular.module('sg.youtube', []).constant('youtubeBasePath', 'http://www.youtube
           scope.ratio = 9 / 16;
         }
         _calcPlayerSize = function() {
-          return scope.relativeHeight = Math.round(element.width() * scope.ratio);
+          return scope.relativeHeight = Math.round(element[0].offsetWidth * scope.ratio);
         };
         _clearTimer = function() {
           if (_mouseMoveTimer) {
@@ -711,7 +711,7 @@ angular.module('sg.youtube', []).constant('youtubeBasePath', 'http://www.youtube
         element.on('click', function(e) {
           var percentPos;
           e.preventDefault();
-          percentPos = e.offsetX / element.width();
+          percentPos = e.offsetX / element[0].offsetWidth;
           iframeCtrl.seekTo(iframeCtrl.getDuration() * percentPos);
           iframeCtrl.play();
           scope.$apply();

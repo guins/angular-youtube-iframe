@@ -381,7 +381,7 @@ angular
 						scope.ratio = 9/16
 
 					_calcPlayerSize = ()->
-						scope.relativeHeight = Math.round(element.width()*scope.ratio)
+						scope.relativeHeight = Math.round(element[0].offsetWidth*scope.ratio)
 
 					_clearTimer = ()->
 						if _mouseMoveTimer
@@ -759,7 +759,7 @@ angular
 
 					element.on 'click', (e)->
 						e.preventDefault()
-						percentPos = e.offsetX/element.width()
+						percentPos = e.offsetX/element[0].offsetWidth
 						iframeCtrl.seekTo(iframeCtrl.getDuration()*percentPos)
 						iframeCtrl.play()
 						scope.$apply()
